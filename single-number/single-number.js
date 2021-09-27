@@ -13,3 +13,5 @@ var singleNumber = function(nums) {
       }
     }
 };
+
+// time and space complexity : O(N) 
