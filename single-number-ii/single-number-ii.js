@@ -3,13 +3,11 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-     let result = {}
-    for(let num of nums) {
-        result[num] = result[num] +1 || 1
+    let one = 0;
+    let two = 0;
+    for(var i = 0; i < nums.length; i++) {
+        one = (one ^ nums[i] & ~two);
+        two = (two ^ nums[i] & ~one);
     }
-    for(var vals in result) {
-      if(result[vals] === 1) {
-        return vals;
-      }
-    }
+    return one;
 };
