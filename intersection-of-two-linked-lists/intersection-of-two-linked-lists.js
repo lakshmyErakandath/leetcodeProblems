@@ -11,92 +11,38 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
-// var getIntersectionNode = function(headA, headB) {
-//     let currA = headA;
-//     let currB = headB;
-//     let resA = headA;
-//     let resB = headB;
-//     let lenA=0;
-//     let lenB=0;
-//     while(currA.next){
-//         lenA++
-//         currA = currA.next;
-//     }
-//     while(currB.next) {
-//         lenB++;
-//         currB = currB.next;
-//     }
-//     let diff = Math.abs(lenA-lenB);
-//     if(lenA > lenB) {
-//         for(var i = 0; i < diff; i++) {
-//         resA = resA.next;
-//         }
-//     }else {
-//      for(var i = 0; i < diff; i++) {
-//         resB = resB.next;
-//     } 
-//     }
-   
-//     while(resA && resB) {
-//             // if(resA.val === resB.val) {
-//             //     if(resA.next===null && resB.next === null) {
-//             // return resA;
-//             // }
-//             // }
-//      if(resA.next === resB.next) {
-//             return resB.next
-//         }else {
-//             resA = resA.next;
-//             resB = resB.next;
-//         }
-//     }
-//     return null;
-    
-// };
-
-// var getIntersectionNode = function(headA, headB) {
-//   var lenA = getLen(headA);
-//   var lenB = getLen(headB);
-//   let diff = Math.abs(lenA - lenB);
-
-//   if (lenA > lenB) {
-//     while (diff--) headA = headA.next;
-//   } else {
-//     while (diff--) headB = headB.next;
-//   }
-
-//   while (headA !== headB) {
-//     headA = headA.next;
-//     headB = headB.next;
-//   }
-
-//   return headA;
-// };
-
-// var getLen = function (head) {
-//   var len = 0;
-//   while (head) {
-//     len++;
-//     head = head.next;
-//   }
-//   return len;
-// };
-
-
+//pseudocode
+//we have 2 linked list that can have different lengths
+//find the length of both linked list by using a helper function getlen() and traversing through both the linked list using while loop
+//find the difference between the length of 2 linked list
+// if headA >  headB then we need to traverse through head A upto the diference.
+//like if difference is 1 and headA is longer we will traverse through the headA 1 times so that both the linked list has the same lengthl
+// after the while loop we will have another while loop to check if headA node equals to headB node if they are return either headA or headB
 var getIntersectionNode = function(headA, headB) {
- 
-    while (headA) {
-        
-        let head2 = headB;
-        
-        while (head2) {
-            if(headA === head2){
-                return headA;
-            }
-            head2 = head2.next;
-        }
-        headA = headA.next;
-    }
-    
-    return null;
+  var lenA = getLen(headA);
+  var lenB = getLen(headB);
+  let diff = Math.abs(lenA - lenB);
+
+  if (lenA > lenB) {
+    while (diff--) headA = headA.next;
+  } else {    
+    while (diff--) headB = headB.next;
+  }
+
+  while (headA !== headB) {
+    headA = headA.next;
+    headB = headB.next;
+  }
+
+  return headA;
 };
+
+var getLen = function (head) {
+  var len = 0;
+  while (head) {
+    len++;
+    head = head.next;
+  }
+  return len;
+};
+
