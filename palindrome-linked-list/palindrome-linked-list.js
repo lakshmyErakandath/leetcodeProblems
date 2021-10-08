@@ -81,3 +81,5 @@ var reverseLinkedList = function (head) {
     }
     return previousNode;
 };
+//time complexity:O(N)
+//space complexity:O(1)
