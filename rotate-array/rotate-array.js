@@ -3,6 +3,11 @@
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+//method:
+// Take the last k integers and put them in a temp array. 
+// Then loop through the nums array from the back starting from lastindex-k
+// rotate the integer to kth 
+// and then add the integers that was saved in temp array to the the front of the nums array
 var rotate = function(nums, k) {
     if (k >= nums.length) {
         k = k% nums.length;
